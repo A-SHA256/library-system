@@ -87,7 +87,7 @@ public class Library {
         Book exists = new Book();
         for(String isbn : getStore().keySet()) {
             Book b = getStore().get(isbn);
-            if (b.getTitle().equalsIgnoreCase(title.trim().toLowerCase())) {
+            if (b.getTitle().equalsIgnoreCase(title.trim())) {
                 exists = b;
                 break;
             }
