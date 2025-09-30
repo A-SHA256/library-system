@@ -98,12 +98,9 @@ public class Library {
     void beenFound(String title) {
         Book b = searchByTitle(title);
         if (b.getTitle() != null) {
-            boolean flag = b.getTitle().equalsIgnoreCase(title.trim());
-            if (flag) {
-                System.out.println("The book " + "\"" + b.getTitle() + "\"" + " exists in our library");
-            } else {
-                System.out.println("The book " + b.getTitle() + " does not exist in our library");
-            }
+            System.out.println("The book " + "\"" + title + "\"" + " exists in our library");
+        } else {
+            System.out.println("The book " + "\"" + title + "\"" + " does not exist in our library");
         }
         System.out.println();
     }
@@ -133,6 +130,7 @@ public class Library {
                     b.getAuthor(),
                     borrowerName);
         }
+        System.out.println();
     }
 
     void borrowedBy(String memberId, String title) {
