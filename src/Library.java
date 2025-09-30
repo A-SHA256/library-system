@@ -137,13 +137,15 @@ public class Library {
 
     void borrowedBy(String memberId, String title) {
         Book b = searchByTitle(title);
-        boolean flag = b.getTitle().equalsIgnoreCase(title.trim());
-        if (flag) {
+        if (b.getTitle() != null) {
+            boolean flag = b.getTitle().equalsIgnoreCase(title.trim());
+            if (flag) {
             for (Member m : members) {
                 if (m.getId().equals(memberId)) {
                     b.setBorrowedId(m.getId());
                 }
             }
+        }
         }
         System.out.println();
         displayAllBooks();
