@@ -87,7 +87,7 @@ public class Library {
         Book exists = new Book();
         for(String isbn : getStore().keySet()) {
             Book b = getStore().get(isbn);
-            if (b.getTitle().equalsIgnoreCase(title.trim().toLowerCase())) {
+            if (b.getTitle().equalsIgnoreCase(title.trim())) {
                 exists = b;
                 break;
             }
@@ -135,11 +135,13 @@ public class Library {
 
     void borrowedBy(String memberId, String title) {
         Book b = searchByTitle(title);
-        boolean flag = b.getTitle().equalsIgnoreCase(title.trim());
-        if (flag) {
-            for (Member m : members) {
-                if (m.getId().equals(memberId)) {
-                    b.setBorrowedId(m.getId());
+        if (b.getTitle() != null) {
+            boolean flag = b.getTitle().equalsIgnoreCase(title.trim());
+            if (flag) {
+                for (Member m : members) {
+                    if (m.getId().equals(memberId)) {
+                        b.setBorrowedId(m.getId());
+                    }
                 }
             }
         }
